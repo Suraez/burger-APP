@@ -1,0 +1,12 @@
+-> Object.keys() returns array converting keys of object passed to this method
+as arguments into strings
+
+-> If image is not displaying try doing this
+import BurgerLogo from '../../assets/images/logo.png'
+export default function Logo() {
+    return (
+        <div className="Logo">
+            <img src={BurgerLogo} alt="Logo"/>
+        </div>
+    )
+}
