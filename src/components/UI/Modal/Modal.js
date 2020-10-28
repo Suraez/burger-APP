@@ -3,7 +3,16 @@ import './Modal.css'
 import Backdrop from '../Backdrop/Backdrop'
 
 
-export default function Modal(props) {
+export default class Modal extends React.Component {
+  shouldComponentUpdate (nextProps, nextState) {
+    return nextProps.show !== this.props.show
+  }
+
+  render() {
+    const {
+      props,
+    } = this;
+
     return (
       <>
         <Backdrop show={props.show} clicked={props.modalClosed}/>
@@ -18,4 +27,5 @@ export default function Modal(props) {
         </div>
       </>
     );
+  }
 }
