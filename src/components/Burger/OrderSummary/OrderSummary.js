@@ -1,6 +1,8 @@
 import React from 'react'
 import Button from '../../UI/Button/Button';
 
+// import {NavLink} from "react-router-dom"
+
 export default class OrderSummary extends React.Component {
   componentDidUpdate(){
     console.log("from ordersummary");
@@ -23,9 +25,11 @@ export default class OrderSummary extends React.Component {
         <Button btnType="Danger" clicked={this.props.purchaseCancelled}>
           CANCEL
         </Button>
-        <Button btnType="Success" clicked={this.props.purchaseContinued}>
-          CONTINUE
-        </Button>
+        {/* <NavLink to="/checkout"> */}
+          <Button btnType="Success" clicked={this.props.purchaseContinued}>
+            CONTINUE
+          </Button>
+        {/* </NavLink>    */}
       </>
     );
   }
