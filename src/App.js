@@ -5,15 +5,19 @@ import Checkout from './containers/Checkout/Checkout';
 
 // import {BrowserRouter as Router, } from 'react-router'
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Orders from './containers/Orders/Orders';
 
 function App() {
   return (
     <Router>
       <div>
         <Layout>
-          <Route path="/" exact component={BurgerBuilder} />
-          <Route path="/checkout" exact component={Checkout} />
+          <Switch>
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/orders" component={Orders} />
+            <Route path="/"  component={BurgerBuilder} />
+          </Switch>
           {/* <BurgerBuilder />
           <Checkout /> */}
         </Layout>
