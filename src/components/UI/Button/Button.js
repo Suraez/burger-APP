@@ -5,9 +5,14 @@ import './Button.css';
 export default function Button(props) {
     const classes = ["Button"];
     classes.push(props.btnType === "Success" ? "Success" : "Danger");
+    console.log("button disabled", props.disabled);
     return (
-        <div onClick={props.clicked} className={classes.join(' ')}>
-            {props.children}
-        </div>
-    )
+      <button
+        onClick={props.clicked}
+        disabled={props.disabled}
+        className={classes.join(" ")}
+      >
+        {props.children}
+      </button>
+    );
 }

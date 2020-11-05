@@ -10,6 +10,11 @@
     display: inline;
 }
 
+.Button:disabled{
+    color: #ccc;
+    cursor: not-allowed;
+}
+
 
 .Success {
     color: #5C9210;

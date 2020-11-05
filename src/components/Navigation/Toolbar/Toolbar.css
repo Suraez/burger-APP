@@ -23,3 +23,13 @@
     }
 }
 
+.mobileOnly{
+    display: none;
+}
+
+@media(max-width: 499px) {
+    .mobileOnly{
+        display: block;
+    }
+}
+
