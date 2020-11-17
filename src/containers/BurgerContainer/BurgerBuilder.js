@@ -17,8 +17,6 @@ class BurgerBuilder extends Component {
     constructor(props) {
         super(props);
         this.state ={
-            totalPrice: 3,
-            purchaseable: false,
             purchasing: false,
             loading: false,
             error: false
@@ -30,7 +28,7 @@ class BurgerBuilder extends Component {
                         .map(igKey => ingredients[igKey])
                         .reduce((sum, el) => sum+el, 0)
 
-        this.setState({purchaseable: sum > 0})
+        return sum > 0
     }
 
     // addIngredientHandler = (type) => {
@@ -108,7 +106,7 @@ class BurgerBuilder extends Component {
                     ingredientAdded={this.props.onIngredientAdded}
                     ingredientRemoved={this.props.onIngredientRemoved}
                     disabled={disabledInfo}
-                    purchaseable={this.state.purchaseable}
+                    purchaseable={this.updatePurchaseState(this.props.ings)}
                     ordered={this.purchaseHandler}
                     price={this.props.price}
                     />
