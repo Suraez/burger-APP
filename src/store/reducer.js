@@ -37,6 +37,17 @@ const reducer = (state = initialState, action) => {
                 },
                 totalPrice: state.totalPrice - INGREDIENTS_PRICE[action.ingredientName]
             }
+        case ACTIONS.RESET_INGREDIENTS:
+            return {
+              ...state,
+              ingredients: {
+                salad: 0,
+                meat: 0,
+                bacon: 0,
+                cheese: 0,
+              },
+              totalPrice: 10
+            };
         default:
             return state;
     }

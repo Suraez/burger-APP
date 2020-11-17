@@ -8,6 +8,7 @@ import Input from '../../../components/Input/Input';
 
 // redux
 import { connect } from 'react-redux'
+import * as ACTIONS from '../../../store/actions'
 
 class ContactData extends Component {
     state = {
@@ -108,6 +109,7 @@ class ContactData extends Component {
         axios.post('/orders.json', order)
             .then(res => {
                 this.setState({loading: false})
+                this.props.onOrderClicked();
                 this.props.history.push('/')
             })
             .catch(err => this.setState({loading: true}))
@@ -161,7 +163,7 @@ class ContactData extends Component {
             <div className="ContactData">
                 <h4>Your Contact Details</h4>
                 {this.state.loading ? <Spinner /> :
-                <form>
+                <form onSubmit={this.orderHandler}>
                     {formElementsArray.map(formElement => {
                         return (
                             <Input
@@ -191,5 +193,11 @@ const mapStateToProps = state => {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        onOrderClicked: () => dispatch({type: ACTIONS.RESET_INGREDIENTS})
+    }
+}
 
-export default connect(mapStateToProps)(ContactData)
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactData)
