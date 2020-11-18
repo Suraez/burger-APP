@@ -1,4 +1,4 @@
-import * as ACTIONS from './actions'
+import * as ACTIONS from './actions/actions'
 
 const initialState = {
     ingredients: {
@@ -8,6 +8,7 @@ const initialState = {
         cheese: 0,
     },
     totalPrice: 10,
+    orders: []
 }
 
 const INGREDIENTS_PRICE = {
@@ -48,6 +49,11 @@ const reducer = (state = initialState, action) => {
               },
               totalPrice: 10
             };
+        case ACTIONS.GET_ORDERS_DATA:
+            return {
+                ...state,
+                orders: action.orders
+            }
         default:
             return state;
     }

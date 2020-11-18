@@ -11,7 +11,8 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 // redux
 import { connect } from 'react-redux';
-import * as ACTIONS from '../../store/actions'
+import { addIngredients, removeIngredients } from '../../store/actions/ingredients'
+
 
 class BurgerBuilder extends Component {
     constructor(props) {
@@ -134,8 +135,8 @@ const mapStateToProps = state =>  {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: (ingName) => dispatch({type: ACTIONS.ADD_INGREDIENT, ingredientName: ingName }),
-        onIngredientRemoved: (ingName) => dispatch({type: ACTIONS.REMOVE_INGREDIENT, ingredientName: ingName})
+        onIngredientAdded: (ingName) => dispatch(addIngredients(ingName)),
+        onIngredientRemoved: (ingName) => dispatch(removeIngredients(ingName))
     }
 }
 

@@ -8,7 +8,7 @@ import Input from '../../../components/Input/Input';
 
 // redux
 import { connect } from 'react-redux'
-import * as ACTIONS from '../../../store/actions'
+import * as ACTIONS from '../../../store/actions/actions'
 
 class ContactData extends Component {
     state = {
