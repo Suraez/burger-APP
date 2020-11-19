@@ -31,7 +31,7 @@ export const purchaseBurger = (orderData) => {
                 // this.props.onOrderClicked();
                 // this.props.history.push('/')
                 console.log(res.data);
-                dispatch(purhcaseBurgerSuccess(res.data, orderData));
+                dispatch(purhcaseBurgerSuccess(res.data.name, orderData));
             })
             .catch(err => {
                 dispatch(purchaseBurgerFail(err))

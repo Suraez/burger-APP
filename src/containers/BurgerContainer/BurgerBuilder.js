@@ -81,6 +81,7 @@ class BurgerBuilder extends Component {
         for (let key in disabledInfo){
             disabledInfo[key] = disabledInfo[key] <= 0
         }
+
         let orderSummary = null
 
         // burger fetching ingredient data from the server
@@ -121,9 +122,9 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = state =>  {
     return {
-        ings: state.ingredients,
-        price: state.totalPrice,
-        error: state.error
+        ings: state.burger.ingredients,
+        price: state.burger.totalPrice,
+        error: state.burger.error
     }
 }
 

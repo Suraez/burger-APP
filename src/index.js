@@ -4,14 +4,21 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { createStore,applyMiddleware, compose } from 'redux'
+import { createStore,applyMiddleware, combineReducers, compose } from 'redux'
 import { Provider  } from 'react-redux'
-import reducer from './store/reducers/burgerBuilder'
+import burgerReducer from './store/reducers/burgerBuilder'
+import orderReducer from './store/reducers/order'
+import thunk from 'redux-thunk'
+
+const rootReducers = combineReducers({
+  burger: burgerReducer,
+  order: orderReducer
+})
 
 // for asynchronous running
-import thunk from 'redux-thunk'
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)))
+const store = createStore(rootReducers, composeEnhancers(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <Provider store={store}>
