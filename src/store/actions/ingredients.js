@@ -13,3 +13,9 @@ export const removeIngredients = (ingName) => {
         ingredientName: ingName
     }
 }
+
+export const resetIngredients = () => {
+    return {
+        type: ACTIONS.RESET_INGREDIENTS
+    }
+}

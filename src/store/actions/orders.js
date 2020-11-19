@@ -1,5 +1,5 @@
 import * as ACTIONS from './actions'
-import axios from 'axios'
+import axios from '../../axios-orders'
 
 export const getOrders = orders => {
     return {
@@ -10,7 +10,7 @@ export const getOrders = orders => {
 
 export const fetchOrders = () => {
     return dispatch => {
-        axios.get('https://burgerapp-c0935.firebaseio.com/orders.json')
+        axios.get('/orders.json')
             .then(res => {
                 const fetchedOrders = [];
                 for (let key in res.data) {
