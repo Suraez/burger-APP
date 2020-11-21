@@ -8,6 +8,7 @@
     margin-right: 20px;
     font-weight: bold;
     display: inline;
+    margin-top: 20px;
 }
 
 .Button:disabled{

@@ -13,7 +13,7 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 // redux
 import { connect } from 'react-redux';
 
-import { addIngredient, removeIngredient, initIngredients } from '../../store/actions/'
+import { addIngredient, removeIngredient, initIngredients, purchaseBurgerInit } from '../../store/actions/'
 
 class BurgerBuilder extends Component {
     constructor(props) {
@@ -66,6 +66,7 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
+        this.props.onPurchaseInit();
         this.props.history.push('/checkout');
     }
 
@@ -132,7 +133,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onIngredientAdded: (ingName) => dispatch(addIngredient(ingName)),
         onIngredientRemoved: (ingName) => dispatch(removeIngredient(ingName)),
-        onSetIngredients: () => dispatch(initIngredients())
+        onSetIngredients: () => dispatch(initIngredients()),
+        onPurchaseInit: () => dispatch(purchaseBurgerInit())
     }
 }
 

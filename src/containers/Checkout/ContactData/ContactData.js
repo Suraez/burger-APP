@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Button from '../../../components/UI/Button/Button';
 import Spinner from "../../../components/UI/Spinner/Spinner"
 
-
 import  "./ContactData.css"
 import axios from '../../../axios-orders';
 import Input from '../../../components/Input/Input';
