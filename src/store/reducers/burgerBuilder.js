@@ -49,7 +49,8 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 ingredients: action.ingredients,
-                error: false
+                error: false,
+                totalPrice: 10
             }
         case ACTIONS.ERROR_OCCURED:
             return {

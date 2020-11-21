@@ -5,4 +5,4 @@ export {
 } from './burgerBuilder.js';
 
 
-export { purchaseBurger, purchaseBurgerInit } from "./order";
+export { purchaseBurger, purchaseBurgerInit, fetchOrders } from "./order";

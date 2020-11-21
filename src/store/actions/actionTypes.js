@@ -4,8 +4,13 @@ export const RESET_INGREDIENTS = 'reset_ingredients';
 export const SET_INGREDIENTS = 'set_ingredients';
 export const ERROR_OCCURED = 'error_occrured'
 
-// order related
+// purchase related
 export const PURCHASE_BURGER_SUCCESS = 'purchase_burger_success'
 export const PURCHASE_BURGER_FAIL = 'purchase_burger_fail'
 export const PURCHASE_BURGER_START = 'purchase_burger_start'
 export const PURCHASE_BURGER_INIT = 'purchase_burger_init'
+
+// order related
+export const FETCH_ORDER_SUCCESS = 'fetch_order_success'
+export const FETCH_ORDER_FAIL  = 'fetch_order_fail'
+export const FETCH_ORDER_START = 'fetch_order_start'
