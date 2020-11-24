@@ -105,8 +105,9 @@ class ContactData extends Component {
             totalPrice: this.props.price,
             orderData: formData
         }
-        this.props.onOrderClicked(order)
-        this.props.history.push('/')
+        this.props.onOrderClicked(order, this.props.token)
+        // commented for  order authentication
+        // this.props.history.push('/')
     }
 
 
@@ -140,7 +141,6 @@ class ContactData extends Component {
         for (let key in updatedOrderForm) {
             formValid = updatedOrderForm[key].valid && formValid
         }
-        console.log(formValid, "formValid");
         this.setState({orderForm: updatedOrderForm, formIsValid: formValid})
     }
 
@@ -184,13 +184,14 @@ const mapStateToProps = state => {
     return {
         ings: state.burger.ingredients,
         price: state.burger.totalPrice,
-        loading: state.order.loading
+        loading: state.order.loading,
+        token: state.auth.token
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onOrderClicked: (orderData) => dispatch(purchaseBurger(orderData))
+        onOrderClicked: (orderData, token) => dispatch(purchaseBurger(orderData, token))
     }
 }
 
