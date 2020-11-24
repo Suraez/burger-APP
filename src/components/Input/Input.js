@@ -55,7 +55,6 @@ export default function Input (props) {
     }
     return (
         <div className="Input">
-            {/* <label className="Label">{props.label}</label> */}
             {inputElement}
         </div>
     )

@@ -153,7 +153,6 @@ class ContactData extends Component {
             })
         }
 
-        console.log(this.state.formIsValid, "render formIsValid");
         return (
             <div className="ContactData">
                 <h4>Your Contact Details</h4>

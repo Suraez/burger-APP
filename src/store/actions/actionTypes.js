@@ -14,3 +14,9 @@ export const PURCHASE_BURGER_INIT = 'purchase_burger_init'
 export const FETCH_ORDER_SUCCESS = 'fetch_order_success'
 export const FETCH_ORDER_FAIL  = 'fetch_order_fail'
 export const FETCH_ORDER_START = 'fetch_order_start'
+
+// user related
+export const AUTH_START = 'auth_start'
+export const AUTH_FAIL = 'auth_fail'
+export const AUTH_SUCCESS = 'auth_success'
+export const AUTH_LOGOUT = 'auth_logout'
