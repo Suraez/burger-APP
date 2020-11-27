@@ -11,6 +11,8 @@ import { connect } from 'react-redux'
 import { purchaseBurger } from '../../../store/actions/index'
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 
+import checkValidity from '../../../utility/utility'
+
 class ContactData extends Component {
     state = {
         orderForm: {
@@ -112,22 +114,7 @@ class ContactData extends Component {
     }
 
 
-    checkValidity = (value, rules) => {
-        let isValid = true;
-        if (rules && rules.required) {
-            isValid = value.trim() !== '' && isValid;
-        }
-
-        if (rules && rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid;
-        }
-
-        if (rules && rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid;
-        }
-
-        return isValid
-    }
+    
 
     formChangeHandler = (e, identifier) => {
         const updatedOrderForm = {...this.state.orderForm};
@@ -135,7 +122,7 @@ class ContactData extends Component {
             ...updatedOrderForm[identifier]
         };
         updatedFormElement.value = e.target.value;
-        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation)
+        updatedFormElement.valid = checkValidity(updatedFormElement.value, updatedFormElement.validation)
         updatedFormElement.touched = true;
         updatedOrderForm[identifier] = updatedFormElement;
         let formValid = true;
