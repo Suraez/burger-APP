@@ -3,7 +3,8 @@ import * as ACTIONS from '../actions/actionTypes'
 const initialState = {
     ingredients: null,
     totalPrice: 10,
-    error: false
+    error: false,
+    building: false
 
 }
 
@@ -23,7 +24,8 @@ const reducer = (state = initialState, action) => {
                     ...state.ingredients,
                     [action.ingredientName]: state.ingredients[action.ingredientName] + 1
                 },
-                totalPrice: state.totalPrice + INGREDIENTS_PRICE[action.ingredientName]
+                totalPrice: state.totalPrice + INGREDIENTS_PRICE[action.ingredientName],
+                building: true
             }
         case ACTIONS.REMOVE_INGREDIENT:
             return {
@@ -32,7 +34,8 @@ const reducer = (state = initialState, action) => {
                     ...state.ingredients,
                     [action.ingredientName]: state.ingredients[action.ingredientName] - 1
                 },
-                totalPrice: state.totalPrice - INGREDIENTS_PRICE[action.ingredientName]
+                totalPrice: state.totalPrice - INGREDIENTS_PRICE[action.ingredientName],
+                building: true
             }
         case ACTIONS.RESET_INGREDIENTS:
             return {
@@ -43,14 +46,15 @@ const reducer = (state = initialState, action) => {
                 bacon: 0,
                 cheese: 0,
               },
-              totalPrice: 10
+              totalPrice: 10,
             };
         case ACTIONS.SET_INGREDIENTS:
             return {
                 ...state,
                 ingredients: action.ingredients,
                 error: false,
-                totalPrice: 10
+                totalPrice: 10,
+                building: false
             }
         case ACTIONS.ERROR_OCCURED:
             return {

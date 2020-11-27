@@ -5,7 +5,7 @@ import './NavigationItem.css'
 export default function NavigationItem(props) {
     return (
       <li className="NavigationItem">
-        <NavLink to={props.link} exact={props.exact}>
+      <NavLink to={props.link} exact={props.exact}>
           {props.children}
         </NavLink>
       </li>

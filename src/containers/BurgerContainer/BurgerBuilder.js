@@ -13,7 +13,7 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 // redux
 import { connect } from 'react-redux';
 
-import { addIngredient, removeIngredient, initIngredients, purchaseBurgerInit } from '../../store/actions/'
+import { addIngredient, removeIngredient, initIngredients, purchaseBurgerInit, setAuthRedirectPath } from '../../store/actions/'
 
 class BurgerBuilder extends Component {
     constructor(props) {
@@ -58,7 +58,12 @@ class BurgerBuilder extends Component {
 
 
     purchaseHandler = () => {
-        this.setState({purchasing: true})
+        if (this.props.isAutheticated) {
+            this.setState({purchasing: true})
+        } else {
+            this.props.history.push('/auth')
+            this.props.onSetAuthRedirectPath('/checkout')
+        }
     }
 
     purchaseCancelHandler = () => {
@@ -98,6 +103,7 @@ class BurgerBuilder extends Component {
                     purchaseable={this.updatePurchaseState(this.props.ings)}
                     ordered={this.purchaseHandler}
                     price={this.props.price}
+                    isAuthenticated={this.props.isAutheticated}
                     />
                 </>
             )
@@ -125,7 +131,8 @@ const mapStateToProps = state =>  {
     return {
         ings: state.burger.ingredients,
         price: state.burger.totalPrice,
-        error: state.burger.error
+        error: state.burger.error,
+        isAutheticated: state.auth.token !== null
     }
 }
 
@@ -134,7 +141,8 @@ const mapDispatchToProps = dispatch => {
         onIngredientAdded: (ingName) => dispatch(addIngredient(ingName)),
         onIngredientRemoved: (ingName) => dispatch(removeIngredient(ingName)),
         onSetIngredients: () => dispatch(initIngredients()),
-        onPurchaseInit: () => dispatch(purchaseBurgerInit())
+        onPurchaseInit: () => dispatch(purchaseBurgerInit()),
+        onSetAuthRedirectPath: (path) => dispatch(setAuthRedirectPath(path)),
     }
 }
 
