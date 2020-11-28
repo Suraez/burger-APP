@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import Layout from './hoc/Layout/Layout'
 import BurgerBuilder from './containers/BurgerContainer/BurgerBuilder';
-import Checkout from './containers/Checkout/Checkout';
-
-// import {BrowserRouter as Router, } from 'react-router'
-
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { connect  } from 'react-redux'
-import Orders from './containers/Orders/Orders';
-import Auth from './containers/Auth/Auth'
 import Logout from './containers/Auth/Logout/Logout';
 import { checkAuthState } from './store/actions';
+
+// lazy loading
+import asyncComponent from './hoc/asyncComponent/asyncComponent'
+
+const asyncCheckout = asyncComponent(() => import('./containers/Checkout/Checkout'))
+const asyncOrders = asyncComponent(() => import('./containers/Orders/Orders'))
+const asyncAuth = asyncComponent(() => import('./containers/Auth/Auth'))
+
 
 function App(props) {
 
@@ -24,9 +26,9 @@ function App(props) {
       <div>
         <Layout>
           <Switch>
-            { props.isAuthenticated && <Route path="/checkout" component={Checkout} />}
-            { props.isAuthenticated && <Route path="/orders" component={Orders} />}
-            <Route path="/auth" component={Auth} />
+            { props.isAuthenticated && <Route path="/checkout" component={asyncCheckout} />}
+            { props.isAuthenticated && <Route path="/orders" component={asyncOrders} />}
+            <Route path="/auth" component={asyncAuth} />
             {props.isAuthenticated && <Route path="/logout" component={Logout} />}
             <Route path="/" exact component={BurgerBuilder} />
             {/* {!props.isAuthenticated && <Redirect to="/" />} */}
